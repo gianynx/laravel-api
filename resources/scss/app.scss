@@ -1,0 +1,28 @@
+@use './partials/variables' as *;
+
+$fa-font-path: "../fonts/webfonts" !default;
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    font-family: 'Lora', serif;
+    background-color: $body_bg;
+}
+
+.table {
+    --bs-table-border-color: $dark_color;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    border-color: $dark_color;
+}
+
+footer {
+    height: 15rem;
+    background-color: $footer_bg;
+}

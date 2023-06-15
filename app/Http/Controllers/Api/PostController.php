@@ -12,24 +12,26 @@ class PostController extends Controller
     {
         $posts = Post::with('technology', 'collaborators')->paginate(2);
         return response()->json([
-            'success' => true,
+            'status' => 'success',
+            'message' => 'Ok',
             'results' => $posts
-        ]);
+        ], 200);
     }
 
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::with('technology', 'collaborators')->where('slug', $slug)->first();
         if ($post) {
             return response()->json([
-                'success' => true,
+                'status' => 'success',
+                'message' => 'Ok',
                 'results' => $post
-            ]);
+            ], 200);
         } else {
             return response()->json([
-                'success' => false,
-                'results' => 'Post not found!'
-            ]);
+                'status' => 'error',
+                'message' => 'Error'
+            ], 404);
         }
     }
 }

@@ -9,9 +9,15 @@ use App\Models\Technology;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('technology', 'collaborators')->paginate(2);
+        //dd($request->query());
+        if (!empty($request->query('technology_id'))) {
+            $technology_id = $request->query('technology_id');
+            $posts = Post::where('technology_id', $technology_id)->with('technology')->paginate(2);
+        } else {
+            $posts = Post::with('technology')->paginate(2);
+        }
         $technologies = Technology::all();
         $data = [
             'posts' => $posts,
@@ -26,7 +32,7 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Post::with('technology', 'collaborators')->where('slug', $slug)->first();
+        $post = Post::with('technology')->where('slug', $slug)->first();
         if ($post) {
             return response()->json([
                 'status' => 'success',

@@ -1,4 +1,9 @@
-<h1>Salve!</h1>
-<p>{{ $lead->address }}</p>
-<p>{{ $lead->name }}</p>
-<p>{{ $lead->message }}</p>
+<div>
+    <h1>Salve!</h1>
+    <div>Email: {{ $lead->address }}</div>
+    <div>Name: {{ $lead->name }}</div>
+    <div>
+        <span>Message:</span>
+        <p>{{ $lead->message }}</p>
+    </div>
+</div>

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Mail\NewContact;
 use App\Models\Lead;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
+/**
+ * Summary of LeadController
+ */
 class LeadController extends Controller
 {
     /**
@@ -23,8 +26,8 @@ class LeadController extends Controller
 
         // validiamo i dati "a mano" per poter gestire la risposta
         $validator = Validator::make($data, [
-            'name' => 'required',
             'address' => 'required|email',
+            'name' => 'required',
             'message' => 'required'
         ]);
 

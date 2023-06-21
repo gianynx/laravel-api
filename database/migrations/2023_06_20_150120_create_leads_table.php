@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('address');
+            $table->string('name');
             $table->timestamps();
         });
     }

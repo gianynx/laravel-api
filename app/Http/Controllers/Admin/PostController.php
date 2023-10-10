@@ -53,10 +53,14 @@ class PostController extends Controller
             $formData['image'] = asset('storage/' . $image_path);
         }
         $post = Post::create($formData);
+
+        // Verifico se ci sono collaboratori associati al post
         if ($request->has('collaborators'))
         {
+            // Collego i collaboratori al post
             $post->collaborators()->attach($request->collaborators);
         }
+
         return redirect()->route('admin.posts.show', $post->slug);
     }
 

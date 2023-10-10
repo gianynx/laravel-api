@@ -49,8 +49,9 @@
                 @endforeach
             </tbody>
         </table>
-        <a class="btn btn-outline-dark text-uppercase mt-4" href="{{ route('admin.posts.create') }}">create a new
-            project</a>
+        <a class="btn btn-outline-dark text-uppercase mt-4" href="{{ route('admin.posts.create') }}">
+            create a new project
+        </a>
         {{ $posts->links('vendor.pagination.bootstrap-5') }}
     </div>
 @endsection

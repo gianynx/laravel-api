@@ -11,9 +11,15 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        //dd($request->query());
+        // dd($request->query());
+
+        // $request->query('key') è un modo per accedere ai parametri della query string di una richiesta HTTP.
         if (!empty($request->query('technology_id'))) {
+
+            // Estraggo il valore del parametro 'technology_id' dalla richiesta.
             $technology_id = $request->query('technology_id');
+
+            // Se 'technology_id' è stato fornito, questa query recupera i post che hanno lo stesso 'technology_id'.
             $posts = Post::where('technology_id', $technology_id)->with('technology')->paginate(2);
         } else {
             $posts = Post::with('technology')->paginate(2);

@@ -27,6 +27,8 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => [
                 'required',
+
+                // Assicuro che il campo title sia unico nella tabella posts, ma ignoro l'attuale record (utile durante l'aggiornamento di un post esistente).
                 Rule::unique('posts')->ignore($this->post),
                 'string',
                 'max:255',
@@ -40,10 +42,14 @@ class UpdatePostRequest extends FormRequest
             ],
             'technology_id' => [
                 'nullable',
+
+                // Verifico che il valore fornito esista nella colonna id della tabella posts.
                 'exists:posts,id'
             ],
             'collaborators' => [
                 'nullable',
+
+                // Verifico che il valore fornito esista nella colonna id della tabella collaborators.
                 'exists:collaborators,id'
             ]
         ];
